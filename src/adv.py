@@ -1,3 +1,5 @@
+import textwrap
+
 from room import Room
 from player import Player
 
@@ -43,15 +45,19 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-new_player = Player("Karim", "outside")
+new_player = Player("Karim")
 
 print(new_player)
 
 # Write a loop that:
 #
-
+while true:
 # * Prints the current room name
+    print(new_player.current_room)
 # * Prints the current description (the textwrap module might be useful here).
+    wrapper = textwrap.TextWrapper(width = 50)
+    word_list = wrapper.wrap(text = ) 
+    print()
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
