@@ -5,5 +5,10 @@ class Player:
         self.name = name
         self.current_room = current_room
 
-    def __str__(self):
-        return f"name: {self.name}, current_room: {self.current_room}"
+    def travel(self, direction):
+        if getattr(self.current_room, f"{direction}_to") is not None:
+            self.current_room = getattr(self.current_room, f"{direction}_to")
+            print(self.current_room)
+        else:
+            print("-------------")
+            print("\nYou shall not pass!✨🧙‍♂️\n")
