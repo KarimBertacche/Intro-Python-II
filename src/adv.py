@@ -70,23 +70,46 @@ while True:
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-    try:
-        if selection == "q":
+    if selection == "q":
+        print("\n")
+        print(f"Bye {player.name} 👋😁")
+        print("\n")
+        exit()
+    elif selection == "n" :
+        if player.current_room.n_to is not None:
+            player.current_room = player.current_room.n_to
+            print("-------------")
             print("\n")
-            print(f"Bye {player.name} 👋😁")
+            print(f"You entered {player.current_room.name}")
             print("\n")
-            exit()
-        elif selection == "n" :
-            if player.current_room.n_to is not None:
-                player.current_room = player.current_room.n_to
-                print("-------------")
-                print("\n")
-                print(f"You entered {player.current_room.name}")
-                print("\n")
-            else:
-                print("You shall not pass!✨🧙‍♂️")
         else:
-            print("I did not understand that command, try again")
-
-    except ValueError:
+            print("You shall not pass!✨🧙‍♂️")
+    elif selection == "s" :
+        if player.current_room.s_to is not None:
+            player.current_room = player.current_room.s_to
+            print("-------------")
+            print("\n")
+            print(f"You entered {player.current_room.name}")
+            print("\n")
+        else:
+            print("You shall not pass!✨🧙‍♂️")
+    elif selection == "e" :
+        if player.current_room.e_to is not None:
+            player.current_room = player.current_room.e_to
+            print("-------------")
+            print("\n")
+            print(f"You entered {player.current_room.name}")
+            print("\n")
+        else:
+            print("You shall not pass!✨🧙‍")
+    elif selection == "w" :
+        if player.current_room.w_to is not None:
+            player.current_room = player.current_room.w_to
+            print("-------------")
+            print("\n")
+            print(f"You entered {player.current_room.name}")
+            print("\n")
+        else:
+            print("You shall not pass!✨🧙‍♂️")
+    else:
         print("Wrong key, please choose valid keys such as [n, s, e, w] or [q] to exit.")
