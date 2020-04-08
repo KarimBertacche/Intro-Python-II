@@ -63,7 +63,7 @@ while True:
     print(player.current_room.description)
 # * Waits for user input and decides what to do.
     print("\n")
-    print("Which way do you want to go next?\n Type -> [n, s, e, w] or [q] to exit \n")
+    print("Where to next?\n Type -> [n, s, e, w] or [q] to exit \n")
     selection = input("~~~~> ")
 
 # If the user enters a cardinal direction, attempt to move to the room there.
@@ -76,10 +76,15 @@ while True:
             print(f"Bye {player.name} 👋😁")
             print("\n")
             exit()
-        elif selection == "n":
-            player.current_room = player.current_room.n_to
-            print(f"Welcome to {player.current_room.name}")
-            print(player.current_room.description)
+        elif selection == "n" :
+            if player.current_room.n_to is not None:
+                player.current_room = player.current_room.n_to
+                print("-------------")
+                print("\n")
+                print(f"You entered {player.current_room.name}")
+                print("\n")
+            else:
+                print("You shall not pass!✨🧙‍♂️")
         else:
             print("I did not understand that command, try again")
 
