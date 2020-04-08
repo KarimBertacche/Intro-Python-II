@@ -47,69 +47,17 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 player = Player(input("Please enter your name: "), room["outside"])
 
-print(player)
-
 #REPL ==> Read, Evaluate, Print, Loop
+print(f"\nYou are {player.current_room.name}\n{player.current_room.description}\n")
 
-# Write a loop that:
 while True:
-    print("-------------")
-    print("\n")
-# * Prints the current room name
-    print(f"{player.name} you are in {player.current_room.name}\n")
-# * Prints the current description (the textwrap module might be useful here)
-    # wrapper = textwrap.TextWrapper(width = 50)
-    # word_list = wrapper.wrap(text = ) 
-    print(player.current_room.description)
-# * Waits for user input and decides what to do.
-    print("\n")
-    print("Where to next?\n Type -> [n, s, e, w] or [q] to exit \n")
-    selection = input("~~~~> ")
+    print("\nWhere to next?\n Type -> [n, s, e, w] or [q] to exit \n")
+    command = input("~~~~> ")
 
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
-    if selection == "q":
-        print("\n")
-        print(f"Bye {player.name} 👋😁")
-        print("\n")
+    if command == "q":
+        print(f"\nBye {player.name} 👋😁\n")
         exit()
-    elif selection == "n" :
-        if player.current_room.n_to is not None:
-            player.current_room = player.current_room.n_to
-            print("-------------")
-            print("\n")
-            print(f"You entered {player.current_room.name}")
-            print("\n")
-        else:
-            print("You shall not pass!✨🧙‍♂️")
-    elif selection == "s" :
-        if player.current_room.s_to is not None:
-            player.current_room = player.current_room.s_to
-            print("-------------")
-            print("\n")
-            print(f"You entered {player.current_room.name}")
-            print("\n")
-        else:
-            print("You shall not pass!✨🧙‍♂️")
-    elif selection == "e" :
-        if player.current_room.e_to is not None:
-            player.current_room = player.current_room.e_to
-            print("-------------")
-            print("\n")
-            print(f"You entered {player.current_room.name}")
-            print("\n")
-        else:
-            print("You shall not pass!✨🧙‍")
-    elif selection == "w" :
-        if player.current_room.w_to is not None:
-            player.current_room = player.current_room.w_to
-            print("-------------")
-            print("\n")
-            print(f"You entered {player.current_room.name}")
-            print("\n")
-        else:
-            print("You shall not pass!✨🧙‍♂️")
+    elif command in ("n", "s", "e", "w"):
+        player.travel(command)
     else:
-        print("Wrong key, please choose valid keys such as [n, s, e, w] or [q] to exit.")
+        print("\nCan't understand your command, please choose valid keys such as [n, s, e, w] or [q] to exit.\n")
