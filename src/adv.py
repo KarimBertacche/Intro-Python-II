@@ -56,14 +56,14 @@ while True:
     print("-------------")
     print("\n")
 # * Prints the current room name
-    print(f"{player.name} is in room {player.current_room.name}\n")
+    print(f"{player.name} you are in {player.current_room.name}\n")
 # * Prints the current description (the textwrap module might be useful here)
     # wrapper = textwrap.TextWrapper(width = 50)
     # word_list = wrapper.wrap(text = ) 
     print(player.current_room.description)
 # * Waits for user input and decides what to do.
     print("\n")
-    print("Selected a direction [n, s, e, w], [q] to exit \n")
+    print("Which way do you want to go next?\n Type -> [n, s, e, w] or [q] to exit \n")
     selection = input("~~~~> ")
 
 # If the user enters a cardinal direction, attempt to move to the room there.
@@ -76,6 +76,10 @@ while True:
             print(f"Bye {player.name} 👋😁")
             print("\n")
             exit()
+        elif selection == "n":
+            player.current_room = player.current_room.n_to
+            print(f"Welcome to {player.current_room.name}")
+            print(player.current_room.description)
         else:
             print("I did not understand that command, try again")
 
