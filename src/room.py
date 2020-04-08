@@ -10,4 +10,6 @@ class Room:
         self.w_to = None
 
     def __str__(self):
-        return f"name: {self.name}, description: {self.description}"
+        string = "-------------\n"
+        string += f"\nYou entered {self.name}\n{self.description}\n"
+        return string
