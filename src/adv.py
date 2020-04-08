@@ -45,22 +45,39 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player(input("Please enter your name: "))
+player = Player(input("Please enter your name: "), room["outside"])
 
-print(new_player)
+print(player)
+
+#REPL ==> Read, Evaluate, Print, Loop
 
 # Write a loop that:
-#
-while true:
+while True:
+    print("-------------")
+    print("\n")
 # * Prints the current room name
-    print(new_player.current_room)
-# * Prints the current description (the textwrap module might be useful here).
-    wrapper = textwrap.TextWrapper(width = 50)
-    word_list = wrapper.wrap(text = ) 
-    print()
+    print(f"{player.name} is in room {player.current_room.name}\n")
+# * Prints the current description (the textwrap module might be useful here)
+    # wrapper = textwrap.TextWrapper(width = 50)
+    # word_list = wrapper.wrap(text = ) 
+    print(player.current_room.description)
 # * Waits for user input and decides what to do.
-#
+    print("\n")
+    print("Selected a direction [n, s, e, w], [q] to exit \n")
+    selection = input("~~~~> ")
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+    try:
+        if selection == "q":
+            print("\n")
+            print(f"Bye {player.name} 👋😁")
+            print("\n")
+            exit()
+        else:
+            print("I did not understand that command, try again")
+
+    except ValueError:
+        print("Wrong key, please choose valid keys such as [n, s, e, w] or [q] to exit.")
