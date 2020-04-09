@@ -1,5 +1,3 @@
-# Write a class to hold player information, e.g. what room they are in
-# currently.
 class Player:
     def __init__(self, name, current_room):
         self.name = name
@@ -27,4 +25,22 @@ class Player:
             else:
                 print("-------------")
                 print(f"\nThere is no {chosen_item} in {self.current_room.name}")
+
+    def drop(self, chosen_item):
+        room_items = self.current_room.items
+        player_items = self.inventory
+        for item in player_items:
+            if item == chosen_item:
+                room_items.append(item)
+                player_items.remove(item)
+                print("-------------")
+                print(f"\n{self.name} you have dropped {item} in {self.current_room.name}\n")
+                print(f"\nYou're in {self.current_room}")
+            else:
+                print("-------------")
+                print(f"\nThere is no {chosen_item} in your inventory")
+                print("\nPlease chose an item from this list to drop:\n")
+                for item in player_items:
+                    print(f"> {item}")
+                
     
