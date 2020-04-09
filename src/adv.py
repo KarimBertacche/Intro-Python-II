@@ -54,14 +54,18 @@ print(f"\nYou are {player.current_room.name}\n{player.current_room.description}\
 while playing:
     print("\nWhere to next?\n  Type -> [n, s, e, w] or [q] to exit")
     print("  To pick item from the room, or type >>> (g)et or (t)ake <object_name>")
-    print("  To drop item into the room, or type >>> (d)rop <object_name>\n")
-    command = input("~~~~> ")
+    print("  To drop item into the room, or type >>> (d)rop <object_name>")
+    print("  To drop item into the room, or type >>> (i)nventory\n")
+    command = input("~~~~> ").lower()
 
     if command == "q":
         print(f"\nBye {player.name} 👋😁\n")
         exit()
     elif command in ("n", "s", "e", "w"):
         player.travel(command)
+    elif command in ("i", "inventory"):
+        print(f"\n{player.name} your inventory contains:\n")
+        player.show_inventory()
     elif len(command) > 1:
         cmd = command.split(' ')
         item_name = cmd[1].strip()
