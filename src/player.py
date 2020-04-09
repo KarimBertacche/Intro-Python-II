@@ -15,7 +15,7 @@ class Player:
             print("-------------")
             print("\nYou shall not pass!✨🧙‍♂️\n")
 
-    def pick(self, chosen_item):
+    def get(self, chosen_item):
         room_items = self.current_room.items
         for item in room_items:
             if item == chosen_item:
@@ -27,3 +27,4 @@ class Player:
             else:
                 print("-------------")
                 print(f"\nThere is no {chosen_item} in {self.current_room.name}")
+    
