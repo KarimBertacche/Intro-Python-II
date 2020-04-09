@@ -40,7 +40,13 @@ class Player:
                 print("-------------")
                 print(f"\nThere is no {chosen_item} in your inventory")
                 print("\nPlease chose an item from this list to drop:\n")
-                for item in player_items:
-                    print(f"> {item}")
+                self.show_inventory()
+        
+    def show_inventory(self):
+        if len(self.inventory) >= 1:
+            for item in self.inventory:
+                print(f"> {item}")
+        else:
+            print("> No items available")
                 
     
