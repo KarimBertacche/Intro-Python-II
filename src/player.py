@@ -16,11 +16,12 @@ class Player:
     def get(self, chosen_item):
         room_items = self.current_room.items
         for item in room_items:
-            if item == chosen_item:
+            if item.name == chosen_item:
                 self.inventory.append(item)
                 room_items.remove(item)
                 print("-------------")
-                print(f"\n{self.name} you have picked {item}\n")
+                # print(f"\n{self.name} you have picked {item}\n")
+                item.on_take(self.name)
                 print(f"\nYou're in {self.current_room}")
             else:
                 print("-------------")
@@ -30,11 +31,11 @@ class Player:
         room_items = self.current_room.items
         player_items = self.inventory
         for item in player_items:
-            if item == chosen_item:
+            if item.name == chosen_item:
                 room_items.append(item)
                 player_items.remove(item)
                 print("-------------")
-                print(f"\n{self.name} you have dropped {item} in {self.current_room.name}\n")
+                item.on_drop(self.name, self.current_room.name)
                 print(f"\nYou're in {self.current_room}")
             else:
                 print("-------------")
@@ -45,7 +46,7 @@ class Player:
     def show_inventory(self):
         if len(self.inventory) >= 1:
             for item in self.inventory:
-                print(f"> {item}")
+                print(f"> {item.name}")
         else:
             print("> No items available")
                 
