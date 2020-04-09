@@ -15,8 +15,10 @@ class Player:
             print("\nYou shall not pass!✨🧙‍♂️\n")
 
     def pick(self, chosen_item):
-        for item in self.current_room.items:
+        room_items = self.current_room.items
+        for item in room_items:
             if item == chosen_item:
                 self.inventory.append(item)
+                room_items.remove(item)
             else:
                 print(f"There is no {chosen_item} in the {self.current_room}")
