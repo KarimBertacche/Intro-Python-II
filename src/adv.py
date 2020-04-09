@@ -51,7 +51,9 @@ player = Player(input("Please enter your name: "), room["outside"])
 print(f"\nYou are {player.current_room.name}\n{player.current_room.description}\n")
 
 while True:
-    print("\nWhere to next?\n Type -> [n, s, e, w] or [q] to exit \n")
+    print("\nWhere to next?\n  Type -> [n, s, e, w] or [q] to exit")
+    print("  To pick item from the room, or type >>> (p)ick <object_name>")
+    print("  To drop item into the room, or type >>> (d)rop <object_name>\n")
     command = input("~~~~> ")
 
     if command == "q":
@@ -59,5 +61,8 @@ while True:
         exit()
     elif command in ("n", "s", "e", "w"):
         player.travel(command)
+    elif len(command) > 1:
+        if command[0] == "p" or command[0] == "pick":
+            player.pick(command[1])
     else:
         print("\nCan't understand your command, please choose valid keys such as [n, s, e, w] or [q] to exit.\n")
