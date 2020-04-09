@@ -1,7 +1,7 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
 class Room:
-    def __init__(self, name, description, items = []):
+    def __init__(self, name, description, items = ["knife"]):
         self.name = name
         self.description = description
         self.items = items
@@ -11,7 +11,6 @@ class Room:
         self.w_to = None
 
     def __str__(self):
-        string = "-------------\n"
-        string += f"\nYou entered {self.name}\n{self.description}\n"
+        string = f"{self.name}\n{self.description}\n"
         string += f"{self.items}"
         return string
