@@ -45,14 +45,15 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+playing = True
 player = Player(input("Please enter your name: "), room["outside"])
 
 #REPL ==> Read, Evaluate, Print, Loop
 print(f"\nYou are {player.current_room.name}\n{player.current_room.description}\n")
 
-while True:
+while playing:
     print("\nWhere to next?\n  Type -> [n, s, e, w] or [q] to exit")
-    print("  To pick item from the room, or type >>> (p)ick <object_name>")
+    print("  To pick item from the room, or type >>> (g)et or (t)ake <object_name>")
     print("  To drop item into the room, or type >>> (d)rop <object_name>\n")
     command = input("~~~~> ")
 
@@ -64,7 +65,12 @@ while True:
     elif len(command) > 1:
         cmd = command.split(' ')
         item_name = cmd[1].strip()
-        if cmd[0] == "p" or cmd[0] == "pick":
+        action = cmd[0] 
+        if action == "g" or action == "get" or action == "t" or action == "take":
             player.get(item_name)
+        elif action == "d" or action == "drop":
+            player.drop(item_name)
+        else:
+            print("\nSorry, you can't do that.\nTry typings either (g)et or (t)ake or (d)rop followed by the chosen <object_name>")
     else:
         print("\nCan't understand your command, please choose valid keys such as [n, s, e, w] or [q] to exit.\n")
