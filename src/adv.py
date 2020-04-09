@@ -63,6 +63,6 @@ while True:
         player.travel(command)
     elif len(command) > 1:
         if command[0] == "p" or command[0] == "pick":
-            player.pick(command[1])
+            player.pick(command[1].strip())
     else:
         print("\nCan't understand your command, please choose valid keys such as [n, s, e, w] or [q] to exit.\n")
