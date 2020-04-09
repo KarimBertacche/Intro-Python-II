@@ -2,6 +2,7 @@ import textwrap
 
 from room import Room
 from player import Player
+from items import Item
 
 # Declare all the rooms
 
@@ -12,15 +13,18 @@ room = {
     ),
     'foyer': Room(
         "Foyer", 
-        """Dim light filters in from the south. Dusty passages run north and east."""
+        """Dim light filters in from the south. Dusty passages run north and east.""",
+        [Item("sword").name, Item("coin").name]
     ),
     'overlook': Room(
         "Grand Overlook", 
-        """A steep cliff appears before you, falling into the darkness. Ahead to the north, a light flickers in the distance, but there is no way across the chasm."""
+        """A steep cliff appears before you, falling into the darkness. Ahead to the north, a light flickers in the distance, but there is no way across the chasm.""",
+        [Item("shield").name]
     ),
     'narrow': Room(
         "Narrow Passage", 
-        """The narrow passage bends here from west to north. The smell of gold permeates the air."""
+        """The narrow passage bends here from west to north. The smell of gold permeates the air.""",
+        [Item("potion").name]
     ),
     'treasure': Room(
         "Treasure Chamber", 
